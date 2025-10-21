@@ -1,0 +1,29 @@
+name: Code Review - Static Analysis & Build
+on:
+  pull_request:
+    branches: [ main, master ]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Static Analysis (Checkstyle, SpotBugs, PMD)
+        run: mvn -B -q -DskipTests=true -Pcode-review verify
+      - name: Upload Static Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-analysis-reports
+          path: |
+            target/spotbugsXml.xml
+            target/pmd.xml
+            target/checkstyle-result.xml
+          if-no-files-found: ignore

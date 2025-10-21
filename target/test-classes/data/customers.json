@@ -1,0 +1,5 @@
+[
+  { "firstName": "Ivy",   "lastName": "Shaw", "postCode": "500001", "currency": "Dollar" },
+  { "firstName": "Jai",   "lastName": "Menon","postCode": "560002", "currency": "Pound"  },
+  { "firstName": "Kiran", "lastName": "Das",  "postCode": "600089", "currency": "Rupee"  }
+]

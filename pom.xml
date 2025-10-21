@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.vin.automation</groupId>
+  <artifactId>banking-qa-framework</artifactId>
+  <version>1.0.0</version>
+  <name>Banking QA Framework</name>
+  <description>Selenium + Cucumber + TestNG + Allure + RestAssured (Java 21)</description>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+
+    <selenium.version>4.36.0</selenium.version>
+    <cucumber.version>7.30.0</cucumber.version>
+    <testng.version>7.11.0</testng.version>
+    <allure.version>2.30.0</allure.version>
+    <restassured.version>5.5.6</restassured.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- Selenium -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+
+    <!-- WebDriver Manager is built into Selenium Manager; not required -->
+
+    <!-- Cucumber (Java + TestNG + DI with PicoContainer) -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- TestNG -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Allure integration -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>${allure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- RestAssured -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${restassured.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.16</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JSON utils (for data) -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.17.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*IT.java</include>
+          </includes>
+          <systemPropertyVariables>
+            <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+            <browser>${browser}</browser>
+            <headless>${headless}</headless>
+            <baseUrl>${baseUrl}</baseUrl>
+          </systemPropertyVariables>
+          <properties>
+            <configurationParameters>
+              cucumber.publish.quiet=true
+            </configurationParameters>
+          </properties>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.12.0</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>ui</id>
+      <properties>
+        <cucumber.filter.tags>@ui</cucumber.filter.tags>
+      </properties>
+    </profile>
+    <profile>
+      <id>api</id>
+      <properties>
+        <cucumber.filter.tags>@api</cucumber.filter.tags>
+      </properties>
+    </profile>
+    <profile>
+      <id>all</id>
+      <properties>
+        <cucumber.filter.tags>@ui or @api</cucumber.filter.tags>
+      </properties>
+    </profile>
+  </profiles>
+</project>
