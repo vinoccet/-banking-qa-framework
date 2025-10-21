@@ -147,9 +147,9 @@
       </properties>
     </profile>
     <profile>
-      <id>all</id>
+      <id>smoke</id>
       <properties>
-        <cucumber.filter.tags>@ui or @api</cucumber.filter.tags>
+        <cucumber.filter.tags>@smoke</cucumber.filter.tags>
       </properties>
     </profile>
   </profiles>
