@@ -131,7 +131,7 @@
             <executions>
                 <execution>
                     <id>generate-cucumber-report</id>
-                    <phase>verify</phase>
+                    <phase>test</phase>
                     <goals>
                         <goal>generate</goal>
                     </goals>
