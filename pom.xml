@@ -131,7 +131,7 @@
             <executions>
                 <execution>
                     <id>generate-cucumber-report</id>
-                    <phase>test</phase>
+                    <phase>verify</phase>
                     <goals>
                         <goal>generate</goal>
                     </goals>
@@ -144,6 +144,7 @@
                         <jsonFiles>
                             <param>**/*.json</param>
                         </jsonFiles>
+                        <checkBuildResult>false</checkBuildResult>
                     </configuration>
                 </execution>
             </executions>
@@ -152,24 +153,24 @@
     </plugins>
   </build>
 
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>ui</id>-->
-<!--      <properties>-->
-<!--        <cucumber.filter.tags>@ui</cucumber.filter.tags>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--    <profile>-->
-<!--      <id>api</id>-->
-<!--      <properties>-->
-<!--        <cucumber.filter.tags>@api</cucumber.filter.tags>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--    <profile>-->
-<!--      <id>smoke</id>-->
-<!--      <properties>-->
-<!--        <cucumber.filter.tags>@smoke</cucumber.filter.tags>-->
-<!--      </properties>-->
-<!--    </profile>-->
-<!--  </profiles>-->
+  <profiles>
+    <profile>
+      <id>ui</id>
+      <properties>
+        <cucumber.filter.tags>@ui</cucumber.filter.tags>
+      </properties>
+    </profile>
+    <profile>
+      <id>api</id>
+      <properties>
+        <cucumber.filter.tags>@api</cucumber.filter.tags>
+      </properties>
+    </profile>
+    <profile>
+      <id>smoke</id>
+      <properties>
+        <cucumber.filter.tags>@smoke</cucumber.filter.tags>
+      </properties>
+    </profile>
+  </profiles>
 </project>

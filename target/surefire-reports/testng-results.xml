@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-22T07:42:03 IST" name="Banking Suite" finished-at="2025-10-22T07:42:38 IST" duration-ms="35028">
+  <suite started-at="2025-10-22T11:39:35 IST" name="Banking Suite" finished-at="2025-10-22T11:39:56 IST" duration-ms="21986">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-10-22T07:42:03 IST" name="Cucumber" finished-at="2025-10-22T07:42:38 IST" duration-ms="35028">
+    <test started-at="2025-10-22T11:39:35 IST" name="Cucumber" finished-at="2025-10-22T11:39:56 IST" duration-ms="21986">
       <class name="com.vin.automation.runners.BankTestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T07:42:03 IST" name="setUpClass" finished-at="2025-10-22T07:42:04 IST" duration-ms="1026" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T11:39:35 IST" name="setUpClass" finished-at="2025-10-22T11:39:35 IST" duration-ms="629" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,7 +21,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T07:42:04 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-10-22T07:42:23 IST" duration-ms="18879" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T11:39:35 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-10-22T11:39:48 IST" duration-ms="12487" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -54,7 +54,7 @@ at ✽.customer should be searchable by first name "Vinoth"(file:///C:/Users/490
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T07:42:23 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-10-22T07:42:38 IST" duration-ms="14887" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T11:39:48 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-10-22T11:39:56 IST" duration-ms="8708" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -70,7 +70,7 @@ at ✽.customer should be searchable by first name "Vinoth"(file:///C:/Users/490
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T07:42:38 IST" name="tearDownClass" finished-at="2025-10-22T07:42:38 IST" duration-ms="119" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.vin.automation.runners.BankTestRunner@4470fbd6]" started-at="2025-10-22T11:39:56 IST" name="tearDownClass" finished-at="2025-10-22T11:39:56 IST" duration-ms="103" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
