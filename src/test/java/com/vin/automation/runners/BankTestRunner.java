@@ -9,7 +9,8 @@ import org.testng.annotations.DataProvider;
         glue = {"com.vin.automation.steps", "com.vin.automation.core"},
         tags = "@smoke",
         plugin = {
-                "pretty"
+                "pretty",
+                "json:target/cucumber-reports/cucumber.json"
         },
         monochrome = true
 )
