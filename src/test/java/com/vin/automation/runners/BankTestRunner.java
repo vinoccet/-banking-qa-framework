@@ -5,9 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = "src/test/resources/features/json_add_customers.feature",
+        features = "src/test/resources/features",
         glue = {"com.vin.automation.steps", "com.vin.automation.core"},
-        tags = "@ui",
+//        tags = "@ui",
         plugin = {
                 "pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"

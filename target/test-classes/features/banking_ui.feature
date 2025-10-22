@@ -1,4 +1,4 @@
-@ui @smoketest
+@ui @smoke
 Feature: Banking flows - GlobalSQA demo
 
   Background:
