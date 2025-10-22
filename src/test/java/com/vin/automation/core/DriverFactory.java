@@ -24,11 +24,11 @@ public final class DriverFactory {
     }
 
     private static RemoteWebDriver createChrome(boolean headless){
-        ChromeOptions options = new ChromeOptions();
-//        if (headless) options.addArguments("--headless=new");
-//        options.addArguments("--no-sandbox","--disable-gpu","--disable-dev-shm-usage");
-        // Selenium Manager auto-resolves driver
-        return new ChromeDriver(options);
+        ChromeOptions opts = new ChromeOptions();
+        if (System.getenv("HEADFUL")==null) {
+            opts.addArguments("--headless=new","--no-sandbox","--disable-dev-shm-usage");
+        }
+        return new ChromeDriver(opts);
     }
 
     private static RemoteWebDriver createFirefox(boolean headless){

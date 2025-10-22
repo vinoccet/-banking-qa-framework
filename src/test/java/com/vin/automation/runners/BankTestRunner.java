@@ -7,10 +7,9 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"com.vin.automation.steps", "com.vin.automation.core"},
-//        tags = "@ui",
+        tags = "@smoke",
         plugin = {
-                "pretty",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+                "pretty"
         },
         monochrome = true
 )

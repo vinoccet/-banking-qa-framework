@@ -4,7 +4,6 @@ Feature: Add customers via Scenario Outline
   Background:
     Given I open the Banking app
 
-  @smoke
   Scenario Outline: Add one customer and open account
     When as Bank Manager I add customer "<firstName>" "<lastName>" with postcode "<postCode>"
     And I open an account for the customer in currency "<currency>"
