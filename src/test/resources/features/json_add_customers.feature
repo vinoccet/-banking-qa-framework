@@ -7,4 +7,5 @@ Feature: Add customers from JSON
 
   Scenario: Load data from JSON and add all
     When I add customers from json file "data/customers.json"
+
     Then I should see "Ivy" present in Customers list

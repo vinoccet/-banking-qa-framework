@@ -17,10 +17,10 @@ jobs:
           java-version: '21'
           cache: maven
       - name: Run Smoke
-        run: mvn -B -q clean test -Psmoke -Dheadless=true -Dbrowser=chrome
-      - name: Upload Allure Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-smoke
-          path: target/allure-results
+        run: mvn -B -q clean test -Psmoke -DsuiteFile="testng.xml"
+#      - name: Upload Allure Results
+#        if: always()
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: allure-results-smoke
+#          path: target/allure-results

@@ -4,16 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public final class DriverManager {
-    private static final ThreadLocal<RemoteWebDriver> TL = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> TL = new ThreadLocal<>();
 
     private DriverManager() {
     }
 
-    public static void set(RemoteWebDriver driver) {
+    public static void set(WebDriver driver) {
         TL.set(driver);
     }
 
-    public static RemoteWebDriver get() {
+    public static WebDriver get() {
         return TL.get();
     }
 

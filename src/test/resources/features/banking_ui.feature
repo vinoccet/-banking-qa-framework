@@ -13,4 +13,8 @@ Feature: Banking flows - GlobalSQA demo
   @transaction
   Scenario: Customer deposit and withdraw
     When as Customer "Harry Potter" I deposit "1000"
+    When as Customer I deposit for following
+      | Name         | Amount |
+      | Harry Potter | 1000   |
+      | vinoth       | 2000   |
 #    Then I can withdraw "500" and see "Transaction successful"

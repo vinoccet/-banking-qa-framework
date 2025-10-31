@@ -3,6 +3,8 @@ package com.vin.automation.pages;
 import com.vin.automation.core.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
 
 public class AddCustomerPage extends BasePage {
     private final By firstName = By.xpath("//input[@ng-model='fName']");

@@ -1,29 +1,36 @@
 package com.vin.automation.steps;
 
-import com.vin.automation.core.Config;
 import com.vin.automation.core.World;
-import com.vin.automation.pages.*;
+import com.vin.automation.pages.BankManagerPage;
+import com.vin.automation.pages.CustomerPage;
+import com.vin.automation.pages.LoginPage;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.PendingException;
-import io.cucumber.java.en.*;
-import io.qameta.allure.Step;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
+
+import java.util.List;
+import java.util.Map;
 
 public class UiSteps {
 
     private final World world;
     private final LoginPage loginPage = new LoginPage();
 
-    public UiSteps(World world){
+    public UiSteps(World world) {
         this.world = world;
     }
 
     @Given("I open the Banking app")
-    public void i_open_app(){
+    public void i_open_app() {
         loginPage.open();
     }
 
     @When("as Bank Manager I add customer {string} {string} with postcode {string}")
-    public void add_customer(String first, String last, String post){
+    public void add_customer(String first, String last, String post) {
         var mgr = loginPage.clickBankManager();
         var add = mgr.goToAddCustomer();
         String alert = add.enterFirstName(first).enterLastName(last).enterPostCode(post).submitAndGetAlert();
@@ -32,7 +39,7 @@ public class UiSteps {
     }
 
     @And("I open an account for the customer in currency {string}")
-    public void open_account(String currency){
+    public void open_account(String currency) {
         var mgr = new BankManagerPage();
         var open = mgr.goToOpenAccount();
         String msg = open.chooseCustomer(world.lastCreatedCustomerFullName).chooseCurrency(currency).processAndGetAlert();
@@ -40,7 +47,7 @@ public class UiSteps {
     }
 
     @Then("customer should be searchable by first name {string}")
-    public void verify_customer_in_list(String firstName){
+    public void verify_customer_in_list(String firstName) {
         var mgr = new BankManagerPage();
         var customers = mgr.goToCustomers();
         customers.search(firstName);
@@ -48,7 +55,7 @@ public class UiSteps {
     }
 
     @When("as Customer {string} I deposit {string}")
-    public void customer_deposit(String fullName, String amount){
+    public void customer_deposit(String fullName, String amount) {
         var customerPage = loginPage.clickCustomer();
         customerPage.chooseUser(fullName).login().deposit(amount);
         Assert.assertTrue(customerPage.status().contains("Deposit Successful"));
@@ -61,4 +68,17 @@ public class UiSteps {
         Assert.assertTrue(customerPage.status().contains(expected), "Status was: " + customerPage.status());
     }
 
+
+    @When("as Customer I deposit for following")
+    public void asCustomerIDepositForFollowing(DataTable table) {
+        List<Map<String, String>> dataTable = table.asMaps();
+        dataTable.forEach(dataMap -> {
+            String fullName = dataMap.get("Name");
+            String amount = dataMap.get("Amount");
+            var customerPage = loginPage.clickCustomer();
+            customerPage.chooseUser(fullName).login().deposit(amount);
+            Assert.assertTrue(customerPage.status().contains("Deposit Successful"));
+
+        });
+    }
 }

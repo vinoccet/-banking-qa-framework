@@ -18,4 +18,6 @@ public class Config {
     public static boolean headless() { return Boolean.parseBoolean(System.getProperty("headless", PROPS.getProperty("headless", "true"))); }
     public static int explicitWaitSec() { return Integer.parseInt(PROPS.getProperty("explicitWaitSec", "15")); }
     public static boolean screenshotOnFailure(){ return Boolean.parseBoolean(PROPS.getProperty("screenshotOnFailure","true")); }
+    public static String browserstackUsername() { return System.getProperty("b_username", PROPS.getProperty("b_username")); }
+    public static String browserstackKey() { return System.getProperty("b_accesskey", PROPS.getProperty("b_accesskey")); }
 }

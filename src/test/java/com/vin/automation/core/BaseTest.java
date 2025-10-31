@@ -3,6 +3,7 @@ package com.vin.automation.core;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +13,7 @@ public abstract class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-        RemoteWebDriver driver = DriverFactory.newDriver(Config.browser(), Config.headless());
+        WebDriver driver = DriverFactory.newDriver(Config.browser(), Config.headless());
         driver.manage().window().maximize();
         DriverManager.set(driver);
     }
